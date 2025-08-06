@@ -16,7 +16,13 @@ public class EnderecoService {
 
     public Endereco findEnderecoByCep(String cep){
 
-        return enderecoClient.getEnderecoByCep(cep);
+        try {
+            return enderecoClient.getEnderecoByCep(cep);
+
+        }catch (Exception e)
+        {
+            throw new DadosInvalidosException("cep {"+cep+"} invalido");
+        }
 
     }
 }
